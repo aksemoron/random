@@ -1,5 +1,5 @@
 FROM adoptopenjdk/openjdk11:alpine-jre
 ARG JAR_FILE=target/*.jar
-COPY . app
+COPY app/ app.jar
 WORKDIR app/
-ENTRYPOINT ["java","-jar","/app.jar"]
+ENTRYPOINT ["java","-jar","app/app.jar"]
