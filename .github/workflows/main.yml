@@ -22,13 +22,9 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: Maven Package
-        run: mvn -B clean package -DskipTests
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Check Out Repo 
-        uses: actions/checkout@v2
-          
-      
+        uses: actions/checkout@v
 
       - name: Login to Docker Hub
         uses: docker/login-action@v1
@@ -39,6 +35,9 @@ jobs:
       - name: Set up Docker Buildx
         id: buildx
         uses: docker/setup-buildx-action@v1
+
+      - name: Maven Package
+        run: mvn -B clean package -DskipTests
 
       - name: Build and push
         id: docker_build
