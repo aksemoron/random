@@ -44,7 +44,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./
-          file: ./docker-compose
+          file: ./docker-compose.yml
           push: true
           tags: aksemoron/random_random:tagname
 
