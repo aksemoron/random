@@ -15,13 +15,10 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  local-registry:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    services:
-      registry:
-        image: registry:1
-        ports:
-          - 5000:5000
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -52,7 +49,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./
-          file: ./Dockerfile
+          file: ./docker-compose.yml
           push: true
           tags: aksemoron/random_random:tagname
 
