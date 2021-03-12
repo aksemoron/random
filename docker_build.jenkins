@@ -14,7 +14,7 @@ pipeline{
              steps{
                 echo "===================== start building image ==============="
                 dir('docker'){
-                docker build .
+                cmd.exe 'docker build . '
           }
         }
       }
