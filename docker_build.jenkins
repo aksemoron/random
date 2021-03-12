@@ -16,7 +16,7 @@ pipeline{
                 script {
                           dockerImage = docker.build "docker"
                         }
-
+}
           }
         }
       }
