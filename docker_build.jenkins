@@ -2,7 +2,9 @@
 properties([disableConcurrentBuilds()])
 
 pipeline{
-   agent any
+   agent {
+        label 'master'
+        }
       options {
           buildDiscarder(logRotator(numToKeepStr: '2', artifactNumToKeepStr: '2'))
           timestamps()
@@ -12,7 +14,7 @@ pipeline{
              steps{
                 echo "===================== start building image ==============="
                 dir('docker'){
-                sh 'docker build . '
+                cmd 'docker build . '
           }
         }
       }
