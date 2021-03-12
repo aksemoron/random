@@ -15,8 +15,8 @@ pipeline{
                 echo "===================== start building image ==============="
                 script {
                           dockerImage = docker.build "docker"
-                        }
-}
+
+
           }
         }
       }
