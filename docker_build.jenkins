@@ -13,10 +13,8 @@ pipeline{
          stage("create docker image"){
              steps{
                 echo "===================== start building image ==============="
-                script {
-                          dockerImage = docker.build "docker"
-
-
+                dir('docker'){
+                sh 'docker build . '
           }
         }
       }
