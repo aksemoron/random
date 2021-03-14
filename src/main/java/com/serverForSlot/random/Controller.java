@@ -11,4 +11,9 @@ public class Controller {
     public ResponseEntity hello(){
         return ResponseEntity.ok("123");
     }
+
+    @GetMapping("/2")
+    public ResponseEntity hello2(){
+        return ResponseEntity.ok("123");
+    }
 }
