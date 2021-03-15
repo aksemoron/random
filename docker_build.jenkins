@@ -11,18 +11,20 @@ pipeline{
           timestamps()
       }
       stages {
-         stage ("Maven build"){
+         stage ("docker pull"){
             steps{
-               echo "===================== start maven build ==============="
-               sh 'mvn clean'
-               sh 'mvn package -Dmaven.test.skip=true'
+               echo "===================== start docker pull ==============="
+               sh 'docker pull aksemoron/random_random:tagname'
             }
 
         }
-         stage("create docker image"){
+         stage("swap images"){
              steps{
-                echo "===================== start building image ==============="
-                sh 'docker build . '
+                echo "===================== start swap images ==============="
+                CONTAINER_ID=$(docker ps | grep takenote | cut -d" " -f1)
+                sh 'docker stop ${CONTAINER_ID}'
+                sh 'docker run --restart unless-stopped -d -p 194.87.98.205:9090:8080 random_random:tagname'
+                sh 'docker system prune -a -f'
         }
       }
    }
