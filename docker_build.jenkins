@@ -21,6 +21,7 @@ pipeline{
          stage("swap images"){
              steps{
                 echo "===================== start swap images ==============="
+                sh'cd /var/lib/jenkins/workspace/SlotMashine'
                 sh 'deploy.sh'
         }
       }
