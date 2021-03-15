@@ -11,18 +11,20 @@ pipeline{
           timestamps()
       }
       stages {
-         stage ("docker pull"){
-            steps{
-               echo "===================== start docker pull ==============="
-               sh 'docker pull aksemoron/random_random:tagname'
-            }
+       stage ("Maven build"){
+                   steps{
+                      echo "===================== start maven build ==============="
+                      sh 'mvn clean'
+                      sh 'mvn package -Dmaven.test.skip=true'
+                   }
 
-        }
-         stage("swap images"){
-             steps{
-                echo "===================== start swap images ==============="
-                bash deploy.sh
-        }
+               }
+                stage("create docker image"){
+                    steps{
+                       echo "===================== start building image ==============="
+                       sh 'docker build . '
+               }
+             }
       }
    }
 }
