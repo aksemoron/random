@@ -21,8 +21,7 @@ pipeline{
          stage("swap images"){
              steps{
                 echo "===================== start swap images ==============="
-                CONTAINER_ID=$(sh 'docker ps | grep takenote | cut -d" " -f1')
-                sh 'docker stop ${CONTAINER_ID}'
+                sh 'docker stop random_random:tagname'
                 sh 'docker run --restart unless-stopped -d -p 194.87.98.205:9090:8080 random_random:tagname'
                 sh 'docker system prune -a -f'
         }
