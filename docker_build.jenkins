@@ -23,7 +23,7 @@ pipeline{
             steps{
                echo "===================== start building image ==============="
                sh 'docker build -t devops-image .'
-               sh 'docker run -d --name devops-container -p 9090:8080 image'
+               sh 'docker run -d --name devops-container -p 9090:8080 devops-image'
                }
            }
 
