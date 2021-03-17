@@ -9,7 +9,7 @@ public class Controller {
 
     @GetMapping("/")
     public ResponseEntity hello(){
-        return ResponseEntity.ok("апдейт");
+        return ResponseEntity.ok("12");
     }
 
     @GetMapping("/2")
