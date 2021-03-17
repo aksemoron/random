@@ -21,7 +21,7 @@ pipeline{
                }
        stage("create docker image"){
             steps{
-               echo "===================== start building image ==============="
+               echo "===================== start building and deploy image ==============="
                sh 'docker stop devops-container'
                sh 'docker rm  devops-container'
                sh 'docker rmi devops-image'
