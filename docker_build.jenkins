@@ -30,7 +30,7 @@ pipeline{
                          echo "===================== start deploy image ==============="
                          sh 'docker run -d --name devops-container -p 9090:8080 image'
                }
-
+}
       }
    }
 }
